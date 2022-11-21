@@ -1,16 +1,17 @@
 import java.util.Arrays;
 
-public class Book extends Author {
+public class Book{
 
     //region Variables
     private String bookName;
     private Integer yearPublication;
+    private final Author author = new Author();
     //endregion
 
     //region Constructors
     Book(String bookName, String authorFullName) {
-        super(authorFullName);
         try {
+            this.author.setAuthorFullName(authorFullName);
             this.bookName = bookName;
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -18,8 +19,8 @@ public class Book extends Author {
     }
 
     Book(String bookName, String authorFullName, Integer yearPublication) {
-        super(authorFullName);
         try {
+            author.setAuthorFullName(authorFullName);
             this.bookName = bookName;
             this.yearPublication = yearPublication;
         }catch(Exception e){
@@ -32,7 +33,7 @@ public class Book extends Author {
     public void printInfo(){
         System.out.println("------Информация------");
         System.out.println("Название книги: " + getBookName() +
-                "\nАвтор книги: " + getAuthorFullName() +
+                "\nАвтор книги: " + author.getAuthorFullName() +
                 "\nГод книги: " + getYearPublication());
         System.out.println("----------------------");
     }
@@ -46,5 +47,20 @@ public class Book extends Author {
     //region yearPublication
     public void setYearPublication(int yearPublication) {this.yearPublication = yearPublication;}
     public Integer getYearPublication() {return this.yearPublication;}
+    //endregion
+
+    //region change Author Full Name
+    public void setAuthorFullName(String author) {this.author.setAuthorFullName(author);}
+    public String getAuthorFullName() {return this.author.getAuthorFullName();}
+    //endregion
+
+    //region change Author First Name
+    public void setAuthorFirstName(String author) {this.author.setAuthorFirstName(author);}
+    public String getAuthorFirstName() {return this.author.getAuthorFullName();}
+    //endregion
+
+    //region change Author Second Name
+    public void setAuthorSecondName(String author) {this.author.setAuthorSecondName(author);}
+    public String getAuthorSecondName() {return this.author.getAuthorSecondName();}
     //endregion
 }
